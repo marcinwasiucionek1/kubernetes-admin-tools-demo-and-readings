@@ -18,11 +18,11 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: python
+          config-file: ./.github/codeql/codeql-config.yml
 
       - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:python"
           output: "results.sarif"
-          sarif_file: "results.sarif"
-          upload_sarif: true 
+          upload: true
