@@ -14,19 +14,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up CodeQL
-        uses: github/codeql-action/setup-codeql@v2
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
         with:
           languages: python
-          
-      - name: Initialize CodeQL database
-        run: |
-          mkdir -p /github/workspace/demo/application-code
-          cp -r demo/application-code/* /github/workspace/demo/application-code/
-          cd /github/workspace
-          codeql database create demo-application-db --language=python --source-root=demo/application-code
-          
+
       - name: Perform CodeQL analysis
-        run: |
-          cd /github/workspace
-          codeql analyze demo-application-db --format=sarif-latest --output=codeql-analysis.sarif
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:python"
+          output: "results.sarif"
+          sarif_file: "results.sarif"
+          upload_sarif: true 
