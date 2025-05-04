@@ -1,6 +1,8 @@
 name: Check Kubernetes YAMLs with kube-linter
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
