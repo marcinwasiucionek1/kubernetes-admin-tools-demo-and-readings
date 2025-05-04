@@ -1,7 +1,8 @@
 name: CodeQL Advanced
 
 on:
-  branches: [ "main" ]
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
