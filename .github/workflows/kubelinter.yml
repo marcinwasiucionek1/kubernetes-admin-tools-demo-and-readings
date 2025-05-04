@@ -8,7 +8,11 @@ on:
 
 jobs:
   scan:
+    name: Scan Kubernetes YAMLs with kube-linter
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      packages: read
     steps:
       - uses: actions/checkout@v4
       - name: Create scan directory
