@@ -13,6 +13,7 @@ jobs:
     name: Build and push Docker image
     runs-on: ubuntu-latest
     permissions:
+      security-events: write
       contents: read
       packages: write
       id-token: write
