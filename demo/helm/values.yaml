@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: vulnerable-app
-  pullPolicy: Never
+  repository: ghcr.io/marcinwasiucionek1/kubernetes-admin-tools-demo-and-readings
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.0.1
+  tag: main
 
 imagePullSecrets: []
 nameOverride: ""
