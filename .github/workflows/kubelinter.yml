@@ -21,7 +21,7 @@ jobs:
       - name: Generate templated YAML files from Helm chart
         shell: bash
         run: |
-          helm template demo/helm-charts --output-dir yamls --name-template test --values demo/helm-charts/values.yaml
+          helm template demo/helm --output-dir yamls --name-template test --values demo/helm/values.yaml
       - name: Create ../results directory for SARIF report files
         shell: bash
         run: mkdir -p ../results
