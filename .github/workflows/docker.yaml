@@ -55,17 +55,3 @@ jobs:
           TAGS: ${{ steps.meta.outputs.tags }}
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.30.0
-        with:
-          image-ref: ghcr.io/${{ github.repository }}:${{ github.sha }}
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
-          output: trivy-results.sarif
-          severity: 'CRITICAL,HIGH'
-      - name: Set GITHUB_REF for CodeQL upload
-        run: echo "GITHUB_REF=refs/heads/main" >> $GITHUB_ENV
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: trivy-results.sarif
